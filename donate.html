@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate – GreenStream Solutions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+
+  <!-- HEADER -->
+  <header class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+      GreenStream Solutions
+    </h1>
+    <a href="index.html" class="text-green-600 hover:underline">← Back to Home</a>
+  </header>
+
+ <!-- DONATE PAGE -->
+<section id="donate" class="py-20 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+    <!-- Left Content -->
+    <div class="space-y-6">
+      <h2 class="text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">
+        Support Our Mission
+      </h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300">
+        Your donation helps us expand e-waste recycling, create green jobs, and grow community programs
+        for a sustainable future.
+      </p>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Choose your preferred way to support us — PayPal for international donors, or M-Pesa for local supporters.
+      </p>
+    </div>
+
+    <!-- Right: Donation Box -->
+    <div class="space-y-8">
+
+      <!-- PayPal Card -->
+      <form id="donateForm" action="https://www.paypal.com/donate" method="post" target="_blank"
+        class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg space-y-6">
+        <input type="hidden" name="business" value="solutionsgreenstream@gmail.com">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="amount" id="paypalAmount">
+
+        <h3 class="text-2xl font-bold flex items-center gap-2">
+          💳 Donate via PayPal
+        </h3>
+
+        <!-- Amount Input -->
+        <div>
+          <label for="amountInput" class="block font-medium mb-2 text-gray-700 dark:text-gray-300">
+            Enter Amount (USD)
+          </label>
+          <input type="number" id="amountInput" required min="1" placeholder="e.g. 10"
+            class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-700 focus:ring-2 focus:ring-brand-green transition">
+        </div>
+
+        <!-- Quick Amount Buttons -->
+        <div class="flex gap-3 justify-center flex-wrap">
+          <button type="button" class="quick-amount px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition" data-amount="5">$5</button>
+          <button type="button" class="quick-amount px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition" data-amount="10">$10</button>
+          <button type="button" class="quick-amount px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition" data-amount="25">$25</button>
+          <button type="button" class="quick-amount px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition" data-amount="50">$50</button>
+        </div>
+
+        <!-- Donate Button -->
+        <button type="submit"
+          class="w-full bg-brand-green text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl hover:bg-green-700 active:scale-95 transition">
+          ❤️ Donate Now
+        </button>
+      </form>
+
+      <!-- M-Pesa Collapsible Card -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg">
+        <button id="toggleMpesa"
+          class="w-full flex justify-between items-center text-left text-xl font-bold text-gray-900 dark:text-white">
+          📱 Donate via M-Pesa
+          <svg id="mpesaArrow" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="mpesaContent" class="hidden mt-4 space-y-3 text-gray-700 dark:text-gray-300">
+          <p>Go to <strong>M-Pesa > Lipa na M-Pesa</strong> and use the details below:</p>
+
+          <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+            <p><strong>Paybill:</strong> <span id="paybill">123456</span>
+              <button onclick="copyPaybill()" class="ml-2 px-2 py-1 text-xs bg-brand-green text-white rounded">Copy</button>
+            </p>
+            <p><strong>Account:</strong> GREENSTREAM</p>
+            <p><strong>Amount:</strong> Your choice 💚</p>
+          </div>
+
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            After sending, take a screenshot of the confirmation SMS and email it to
+            <a href="mailto:solutionsgreenstream@gmail.com" class="text-brand-green underline">
+              solutionsgreenstream@gmail.com</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="bg-gray-100 dark:bg-gray-900 mt-12">
+  <div class="max-w-7xl mx-auto px-6 py-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div>
+      <h3 class="font-bold mb-2">GreenStream Solutions</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Leading the way in e-waste management and sustainability.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Quick Links</h4>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#about" class="hover:underline">About</a></li>
+        <li><a href="#services" class="hover:underline">Services</a></li>
+        <li><a href="#blog" class="hover:underline">Blog</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Contact</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Busia, Kenya — Florida Building Room 101 4th Floor<br>
+        solutionsgreenstream@gmail.com<br>
+        +254795962604
+      </p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Follow Us</h4>
+      <div class="flex space-x-4">
+        <!-- Facebook Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+        <!-- Twitter Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4 1a9 9 0 01-2.82 1.1A4.48 4.48 0 0016 0a4.48 4.48 0 00-4.39 5.5A12.94 12.94 0 013 1s-4 9 5 13a13.38 13.38 0 01-8 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+          </svg>
+        </a>
+        <!-- Instagram Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="0.5"></circle>
+          </svg>
+        </a>
+        <!-- LinkedIn Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2h-2v9H10v-9H8v9H4v-9a6 6 0 016-6h6zM2 9h4v12H2zM4 4a2 2 0 110 4 2 2 0 010-4z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center py-4 text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-700">
+    © 2025 GreenStream Solutions. All rights reserved.
+  </div>
+</footer>
+<script>
+  // Quick amount button logic
+  document.querySelectorAll(".quick-amount").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.getElementById("amountInput").value = btn.dataset.amount;
+    });
+  });
+
+  // PayPal form validation
+  document.getElementById("donateForm").addEventListener("submit", function (e) {
+    const amount = document.getElementById("amountInput").value;
+    if (!amount || amount <= 0) {
+      e.preventDefault();
+      alert("Please enter a valid amount.");
+      return;
+    }
+    document.getElementById("paypalAmount").value = amount;
+  });
+
+  // M-Pesa collapsible
+  const toggleMpesa = document.getElementById("toggleMpesa");
+  const mpesaContent = document.getElementById("mpesaContent");
+  const mpesaArrow = document.getElementById("mpesaArrow");
+
+  toggleMpesa.addEventListener("click", () => {
+    mpesaContent.classList.toggle("hidden");
+    mpesaArrow.classList.toggle("rotate-180");
+  });
+
+  // Copy Paybill
+  function copyPaybill() {
+    const paybill = document.getElementById("paybill").innerText;
+    navigator.clipboard.writeText(paybill);
+    alert("Paybill copied to clipboard ✅");
+  }
+</script>
+
+
+</body>
+</html>

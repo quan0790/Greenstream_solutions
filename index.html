@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en" class="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GreenStream Solutions — E-Waste Management & Sustainability</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS + Lucide -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: { 'brand-green': '#16a34a' },
+          keyframes: {
+            fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' }},
+            pulseGlow: { '0%, 100%': { transform: 'scale(1)' }, '50%': { transform: 'scale(1.05)' } }
+          },
+          animation: {
+            fadeIn: 'fadeIn 0.8s ease-out forwards',
+            pulseGlow: 'pulseGlow 3s ease-in-out infinite'
+          }
+        }
+      }
+    };
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      AOS.init();
+    });
+  </script>
+
+  <meta name="description" content="GreenStream Solutions — community-driven e-waste collection, recycling, education and sustainable tech innovation." />
+</head>
+
+<body class="antialiased bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="sticky top-0 z-40 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between py-4">
+      <a href="#hero" class="flex items-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3s4 2 6 6-2 9-6 12C6 18 4 9 12 3z" />
+        </svg>
+        <span class="font-semibold text-lg">GreenStream <span class="font-light">Solutions</span></span>
+      </a>
+
+      <!-- Desktop nav -->
+     <nav class="hidden md:flex items-center gap-6 text-gray-700 dark:text-gray-200">
+  <a href="#hero" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="home"></i> Home
+  </a>
+  <a href="#about" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="info"></i> About
+  </a>
+  <a href="#programs" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="layers"></i> Programs
+  </a>
+  <a href="#blog" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="book-open-text"></i> Blog
+  </a>
+  <a href="#faqs" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="help-circle"></i> FAQs
+  </a>
+  <a href="#contact" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="map-pin"></i> Location
+  </a>
+  <a href="#get-involved" class="flex items-center gap-2 hover:text-brand-green transition">
+    <i data-lucide="users"></i> Get Involved
+  </a>
+</nav>
+        <button onclick="openModal()" class="bg-brand-green text-white px-4 py-2 rounded-lg shadow hover:scale-105 transition">Contact Us</button>
+        <button id="theme-toggle" aria-label="Toggle dark mode" class="ml-2 p-2 rounded-md border border-gray-200 dark:border-gray-700">
+          <!-- sun/moon icons toggle -->
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 3.25a.75.75 0 01.75.75V5a.75.75 0 01-1.5 0V4a.75.75 0 01.75-.75zM10 15a.75.75 0 01.75.75V16a.75.75 0 01-1.5 0v-.25A.75.75 0 0110 15z..." />
+          </svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 116.707 2.707a7 7 0 0010.586 10.586z" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile nav toggle -->
+      <div class="md:hidden flex gap-3">
+        <button id="mobile-menu-btn" class="p-2 rounded-md border border-gray-300 dark:border-gray-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-2 px-2">
+        <a href="#hero" class="py-2">Home</a>
+        <a href="#about" class="py-2">About</a>
+        <a href="#programs" class="py-2">Programs</a>
+        <a href="#blog" class="py-2">Blog</a>
+        <a href="#faqs" class="py-2">FAQs</a>
+        <a href="#contact" class="py-2">Location</a>
+        <a href="#get-involved" class="py-2 bg-brand-green text-white px-4 py-2 rounded-lg inline-block">Join</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="pt-16 pb-20">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6 animate-fadeIn">
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Reduce e-waste. Restore the planet.</h1>
+          <p class="text-gray-700 dark:text-gray-300 max-w-xl">GreenStream Solutions mobilizes communities and businesses to recycle e-waste, create jobs, and push for sustainable tech.</p>
+          <div class="flex gap-3 flex-wrap">
+            <button onclick="openModal()" class="bg-brand-green text-white px-5 py-3 rounded-lg shadow hover:scale-105 transition">Join Us</button>
+            <a href="donate.html" class="border border-gray-300 px-5 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+              Donate
+            </a>
+          </div>
+        </div>
+
+        <div class="relative animate-pulseGlow">
+          <div class="rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-green-50 to-white dark:from-gray-800 dark:to-gray-900 p-6">
+            <div class="w-full h-64 bg-gradient-to-br from-gray-100 to-white dark:from-gray-700 dark:to-gray-800 rounded-lg flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-40 h-40 text-green-400 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 20l9-5-9-5-9 5 9 5z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+        <!-- ABOUT -->
+<section id="about" class="py-20 bg-gray-50 dark:bg-gray-900" data-aos="fade-up">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+    <!-- LEFT: TEXT -->
+    <div>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white" data-aos="fade-right">
+        About Us
+      </h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed" data-aos="fade-right" data-aos-delay="100">
+        GreenStream Solutions is dedicated to e-waste management.
+      </p>
+      <p class="mt-3 text-gray-700 dark:text-gray-300 leading-relaxed" data-aos="fade-right" data-aos-delay="200">
+        We are a community-driven NGO focused on safe e-waste collection, recycling, and education.
+        Our programs create local jobs, reduce hazardous waste, and help communities transition to more sustainable technology practices.
+      </p>
+
+      <!-- Vision & Mission Cards -->
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-transform hover:-translate-y-1" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="font-semibold text-xl mb-2 text-brand-green">Our Vision</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            A world where technology is circular and electronic waste never harms communities.
+          </p>
+        </div>
+        <div class="p-5 bg-white dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition-transform hover:-translate-y-1" data-aos="zoom-in" data-aos-delay="400">
+          <h3 class="font-semibold text-xl mb-2 text-brand-green">Our Mission</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Collect, recycle and educate—while creating sustainable livelihoods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- RIGHT: IMAGE -->
+    <div data-aos="fade-left">
+      <img 
+        src="In Focus_ Hazardous Materials in E-waste.jpg" 
+        alt="E-waste collection" 
+        class="w-full rounded-2xl shadow-xl object-cover h-72 md:h-96 hover:scale-105 transition-transform duration-500"
+      />
+    </div>
+  </div>
+</section>
+<!-- Programs Section -->
+<section id="programs" class="py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center">Our Programs</h2>
+    <p class="mt-2 text-gray-600 dark:text-gray-400 text-center">
+      Practical projects that turn e-waste into opportunity.
+    </p>
+
+    <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="recycle" class="w-10 h-10 mx-auto text-green-600 dark:text-green-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">E-waste Collection & Recycling</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          We organize collection drives and partner with certified recyclers to process electronics safely.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="graduation-cap" class="w-10 h-10 mx-auto text-blue-600 dark:text-blue-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Education & Awareness</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Workshops, school programs and campaigns to raise awareness on safe disposal and reuse.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="handshake" class="w-10 h-10 mx-auto text-purple-600 dark:text-purple-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Corporate Partnerships</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Helping businesses set up responsible take-back and e-waste management policies.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="gavel" class="w-10 h-10 mx-auto text-red-600 dark:text-red-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Policy Advocacy</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Advocating for stronger regulations and incentives for circular electronics.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="cpu" class="w-10 h-10 mx-auto text-yellow-600 dark:text-yellow-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Sustainable Tech Innovations</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Pilots for repair hubs, refurbishing and modular design to extend product life.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="map-pin" class="w-10 h-10 mx-auto text-pink-600 dark:text-pink-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Community Collection Hubs</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Local drop-off points and pick-up schedules tailored to neighborhoods.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- BLOG / NEWS PREVIEW -->
+    <section id="blog" class="py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center">Blogs & Updates</h2>
+    <p class="mt-2 text-gray-600 dark:text-gray-400 text-center">
+      Stories, insights, and news from our work in e-waste and sustainability.
+    </p>
+
+     <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Blog Card 1 -->
+      <article class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="truck" class="w-10 h-10 mx-auto text-brand-green"></i>
+        <h3 class="mt-3 font-semibold text-lg">Community e-waste drive collects 2 tons</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Our recent drive at Riverside gathered devices for safe recycling — and created repair jobs.
+        </p>
+        <a href="blog1.html" class="mt-3 inline-block text-brand-green hover:underline">Read more</a>
+      </article>
+       <article class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="school" class="w-10 h-10 mx-auto text-blue-600 dark:text-blue-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">School workshop: reuse and repair</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Hands-on session teaching students simple repairs to extend device life.
+        </p>
+        <a href="blog2.html" class="mt-3 inline-block text-brand-green hover:underline">Read more</a>
+      </article>
+      <article class="p-5 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-xl hover:scale-105 transition duration-300 text-center">
+        <i data-lucide="handshake" class="w-10 h-10 mx-auto text-purple-600 dark:text-purple-400"></i>
+        <h3 class="mt-3 font-semibold text-lg">Partnering with local businesses</h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          We launched a take-back pilot with two electronics retailers in Nairobi.
+        </p>
+        <a href="blog3.html" class="mt-3 inline-block text-brand-green hover:underline">Read more</a>
+      </article>
+      </div>
+    </div>
+  </div>
+</section>
+ <!-- FAQ Section -->
+<section id="faqs" class="py-12 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="text-2xl font-bold text-center">Frequently Asked Questions</h2>
+
+    <div class="mt-6 space-y-3">
+      <!-- FAQ 1 -->
+      <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow">
+        <button class="w-full text-left faq-toggle font-medium flex justify-between items-center">
+          <span>What do you accept?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-content hidden mt-2 text-sm text-gray-600 dark:text-gray-400">
+          We accept phones, laptops, chargers, batteries (in appropriate packaging) and small electronics. Contact us for large appliances.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="bg-white dark:bg-gray-900 p-4 rounded-lg shadow">
+        <button class="w-full text-left faq-toggle font-medium flex justify-between items-center">
+          <span>How do I schedule a pickup?</span>
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-content hidden mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Use our volunteer form or WhatsApp us and we'll confirm a pickup time for your area.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-12">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-2xl font-bold">Contact</h2>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">Reach out for partnerships, donations, or program questions.</p>
+
+        <div class="mt-6 grid md:grid-cols-2 gap-6">
+          <form id="contact-form" class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow space-y-4">
+            <input name="name" placeholder="Your name" class="w-full p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent" />
+            <input name="email" placeholder="Your email" class="w-full p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent" />
+            <textarea name="message" placeholder="Message" class="w-full p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent"></textarea>
+            <div class="flex items-center justify-between">
+              <button type="submit" class="bg-brand-green text-white px-4 py-2 rounded">Send message</button>
+              <a href="https://wa.me/254795962604?text=Hello%20GreenStream%20Solutions" class="underline">Message on WhatsApp</a>
+            </div>
+          </form>
+
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow">
+            <h3 class="font-semibold">Our office</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Busia, Kenya — Florida Building Room 101 4th Floor</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Phone: +254795962604</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Email:solutionsgreenstream@gmail.com</p>
+            <div class="mt-4">
+  <!-- Google Maps Embed -->
+  <iframe
+    class="w-full h-48 rounded-lg border-0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8592455133947!2d36.82194631538218!3d-1.2920659990557914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10b3b0b7b6d9%3A0x5c75b8f8d2ee56ff!2sNairobi%20CBD!5e0!3m2!1sen!2ske!4v1694567890123!5m2!1sen!2ske">
+  </iframe>
+</div>
+
+    </section>
+
+    <!-- GET INVOLVED / VOLUNTEER FORM -->
+    <section id="get-involved" class="py-12 bg-gray-50 dark:bg-gray-800">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-2xl font-bold text-center">Get Involved</h2>
+        <p class="mt-2 text-center text-gray-600 dark:text-gray-400">Join a drive, volunteer, or partner with us.</p>
+
+        <form id="volunteer-form" class="mt-6 bg-white dark:bg-gray-900 p-6 rounded-lg shadow space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input required name="name" placeholder="Full name" class="p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent" />
+            <input required name="email" type="email" placeholder="Email address" class="p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent" />
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <input required name="phone" placeholder="Phone number" class="p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent" />
+            <select name="interest" class="p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent">
+              <option>Volunteer — Collection Drive</option>
+              <option>Volunteer — Awareness & Schools</option>
+              <option>Partner — Corporate</option>
+            </select>
+          </div>
+          <textarea name="message" placeholder="Tell us how you'd like to help (optional)" class="w-full p-3 rounded border border-gray-200 dark:border-gray-700 bg-transparent"></textarea>
+          <div class="flex items-center justify-between">
+            <button type="submit" class="bg-brand-green text-white px-5 py-3 rounded-lg">Send</button>
+            <a href="https://wa.me/254700000000?text=I%27m%20interested%20in%20volunteering%20with%20GreenStream" class="text-sm underline">Chat on WhatsApp</a>
+          </div>
+        </form>
+    </section>
+
+  </main>
+  <!-- CONTACT MODAL -->
+  <div id="contactModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl w-full max-w-lg relative">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">Contact Us</h2>
+      <p class="text-center text-gray-600 dark:text-gray-400 mt-2">
+      Have questions or want to partner with us? We'd love to hear from you.
+    </p>
+
+    <form class="mt-6 max-w-2xl mx-auto space-y-4">
+      <div>
+        <label for="name" class="block text-sm font-medium">Your Name</label>
+        <input type="text" id="name" name="name" required
+          class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-900">
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium">Your Email</label>
+        <input type="email" id="email" name="email" required
+          class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-900">
+      </div>
+
+      <div>
+        <label for="message" class="block text-sm font-medium">Message</label>
+        <textarea id="message" name="message" rows="4" required
+          class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-900"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-brand-green hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+    </div>
+  </div>
+<!-- FOOTER -->
+<footer class="bg-gray-100 dark:bg-gray-900 mt-12">
+  <div class="max-w-7xl mx-auto px-6 py-8 grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div>
+      <h3 class="font-bold mb-2">GreenStream Solutions</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Leading the way in e-waste management and sustainability.
+      </p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Quick Links</h4>
+      <ul class="space-y-1 text-sm">
+        <li><a href="#about" class="hover:underline">About</a></li>
+        <li><a href="#services" class="hover:underline">Services</a></li>
+        <li><a href="#blog" class="hover:underline">Blog</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Contact</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Busia, Kenya — Florida Building Room 101 4th Floor<br>
+        solutionsgreenstream@gmail.com<br>
+        +254795962604
+      </p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold mb-2">Follow Us</h4>
+      <div class="flex space-x-4">
+        <!-- Facebook Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
+        </a>
+        <!-- Twitter Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0022.4 1a9 9 0 01-2.82 1.1A4.48 4.48 0 0016 0a4.48 4.48 0 00-4.39 5.5A12.94 12.94 0 013 1s-4 9 5 13a13.38 13.38 0 01-8 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+          </svg>
+        </a>
+        <!-- Instagram Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path>
+            <circle cx="17.5" cy="6.5" r="0.5"></circle>
+          </svg>
+        </a>
+        <!-- LinkedIn Icon -->
+        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-brand-green transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2h-2v9H10v-9H8v9H4v-9a6 6 0 016-6h6zM2 9h4v12H2zM4 4a2 2 0 110 4 2 2 0 010-4z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center py-4 text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-700">
+    © 2025 GreenStream Solutions. All rights reserved.
+  </div>
+</footer>
+  <!-- JS scripts -->
+  <script>
+    // Mobile menu toggle
+    const mobileBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    mobileBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Dark mode toggle
+    const themeBtn = document.getElementById("theme-toggle");
+    themeBtn.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+      document.getElementById("icon-sun").classList.toggle("hidden");
+      document.getElementById("icon-moon").classList.toggle("hidden");
+    });
+
+    function openModal() {
+      document.getElementById("contactModal").classList.remove("hidden");
+    }
+    function closeModal() {
+      document.getElementById("contactModal").classList.add("hidden");
+    }
+     // FAQ Toggle Script
+  document.querySelectorAll(".faq-toggle").forEach(button => {
+    button.addEventListener("click", () => {
+      const content = button.nextElementSibling;
+      const icon = button.querySelector(".icon");
+
+      // Close all other FAQs (optional)
+      document.querySelectorAll(".faq-content").forEach(el => {
+        if (el !== content) el.classList.add("hidden");
+      });
+      document.querySelectorAll(".faq-toggle .icon").forEach(i => {
+        if (i !== icon) i.textContent = "+";
+      });
+
+      // Toggle this one
+      content.classList.toggle("hidden");
+      icon.textContent = content.classList.contains("hidden") ? "+" : "−";
+    });
+  });
+  </script>
+</body>
+</html>
